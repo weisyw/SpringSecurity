@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:mysql://rm-bp1d9aa4r38948t42ko.mysql.rds.aliyuncs.com:3306/ww_security?characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: WangWei001103
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    port: 6379
+    host: 114.115.177.60
+    password: ww1103
+    database: 10
+
+mybatis-plus:
+  mapper-locations: classpath*:/com/ww/mapper/**/*.xml
