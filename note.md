@@ -64,9 +64,9 @@ public class HelloController {
 ![输入图片说明](https://picture-20221025.oss-cn-hangzhou.aliyuncs.com/img/image-20230214215720502.png)
 ## 3.2.  原理初探
 ### 3.2.1. SpringSecurity完整流程
-SpringSecurity的原理其实就是一个过滤器链，内部包含了提供各种功能的过滤器。这里我们可以看看入门案例中的过滤器。<br />![image.png](https://cdn.nlark.com/yuque/0/2023/png/25843110/1673685496153-3675d33b-87aa-427d-957a-ed40e2f3ebef.png#averageHue=%23f2e5b9&clientId=u2abd55b9-1e52-4&from=paste&height=234&id=u5fda2268&name=image.png&originHeight=234&originWidth=948&originalType=binary&ratio=1&rotation=0&showTitle=false&size=15835&status=done&style=none&taskId=u6aa2f2d2-2bd0-4582-96c5-15ba14bc078&title=&width=948)<br />核心过滤器<br />**UsernamePasswordAuthenticationFilter**：负责处理我们在登陆页面填写了用户名密码后的登陆请求。入门案例的认证工作主要有它负责。<br />**ExceptionTranslationFilter**：处理过滤器链中抛出的任何AccessDeniedException和AuthenticationException 。<br />**FilterSecurityIntercepto**r：负责权限校验的过滤器。<br />通过Debug查看当前系统中SpringSecurity过滤器链中有哪些过滤器及它们的顺序：<br />![image.png](https://cdn.nlark.com/yuque/0/2023/png/25843110/1673687304844-ac8cdc9f-c4e9-4300-8666-5ff18124d95f.png#averageHue=%23f7f5f3&clientId=ua824b353-685f-4&from=paste&height=632&id=ud9c50607&name=image.png&originHeight=632&originWidth=501&originalType=binary&ratio=1&rotation=0&showTitle=false&size=61496&status=done&style=none&taskId=u81bd5673-4fca-42f4-a5d3-1d9090d54ee&title=&width=501)
+SpringSecurity的原理其实就是一个过滤器链，内部包含了提供各种功能的过滤器。这里我们可以看看入门案例中的过滤器。<br />![image.png](https://picture-20221025.oss-cn-hangzhou.aliyuncs.com/img/image-20230214220213864.png)<br />核心过滤器<br />**UsernamePasswordAuthenticationFilter**：负责处理我们在登陆页面填写了用户名密码后的登陆请求。入门案例的认证工作主要有它负责。<br />**ExceptionTranslationFilter**：处理过滤器链中抛出的任何AccessDeniedException和AuthenticationException 。<br />**FilterSecurityIntercepto**r：负责权限校验的过滤器。<br />通过Debug查看当前系统中SpringSecurity过滤器链中有哪些过滤器及它们的顺序：<br />![image.png](https://picture-20221025.oss-cn-hangzhou.aliyuncs.com/img/image-20230214220315579.png)
 ### 3.2.2. 认证流程详解
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/25843110/1673689735102-84949155-e9d1-4083-8df7-0b5624991ac7.png#averageHue=%23f6f6f6&clientId=uefcf72ed-0595-4&from=paste&height=488&id=uef8c99c0&name=image.png&originHeight=488&originWidth=1168&originalType=binary&ratio=1&rotation=0&showTitle=false&size=77780&status=done&style=none&taskId=ue72f84c9-c257-47a9-89cd-26e92e33268&title=&width=1168)<br />概念速查：<br />Authentication接口：它的实现类，表示当前访问系统的用户，封装了用户相关信息。<br />AuthenticationManager接口：定义了认证Authentication的方法 <br />UserDetailsService接口：加载用户特定数据的核心接口。里面定义了一个根据用户名查询用户信息的方法。<br />UserDetails接口：提供核心用户信息。通过UserDetailsService根据用户名获取处理的用户信息要封装成UserDetails对象返回。然后将这些信息封装到Authentication对象中。
+![image.png](https://picture-20221025.oss-cn-hangzhou.aliyuncs.com/img/image-20230214220358615.png)<br />概念速查：<br />Authentication接口：它的实现类，表示当前访问系统的用户，封装了用户相关信息。<br />AuthenticationManager接口：定义了认证Authentication的方法 <br />UserDetailsService接口：加载用户特定数据的核心接口。里面定义了一个根据用户名查询用户信息的方法。<br />UserDetails接口：提供核心用户信息。通过UserDetailsService根据用户名获取处理的用户信息要封装成UserDetails对象返回。然后将这些信息封装到Authentication对象中。
 ## 3.3. 解决问题
 ### 3.3.1. 思路分析
 登录：<br />①自定义登录接口 
@@ -85,7 +85,7 @@ SpringSecurity的原理其实就是一个过滤器链，内部包含了提供各
    - 从redis中获取用户信息
    - 存入SecurityContextHolder
 
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/25843110/1673697402789-274bb1e0-748c-433b-8feb-5c9cab52b0a2.png#averageHue=%23f4f3f0&clientId=uefcf72ed-0595-4&from=paste&height=860&id=u2a22cf60&name=image.png&originHeight=860&originWidth=1095&originalType=binary&ratio=1&rotation=0&showTitle=false&size=72149&status=done&style=none&taskId=udef02ed4-9eca-492a-a691-ee5a2f20389&title=&width=1095)
+![image.png](https://picture-20221025.oss-cn-hangzhou.aliyuncs.com/img/image-20230214220503127.png)
 ### 3.3.2. 准备工作
 
 1. 引入依赖
