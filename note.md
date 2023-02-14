@@ -857,7 +857,7 @@ public class LoginUser implements UserDetails {
     }
 }
 ```
-注意：如果要测试，需要往用户表中写入用户数据，并且如果你想让用户的密码是明文存储，需要在密码前加{noop}。例如<br />![image.png](https://cdn.nlark.com/yuque/0/2023/png/25843110/1673699689185-7e8b40ec-5c1a-4263-a071-7148518b1d49.png#averageHue=%23deb978&clientId=uefcf72ed-0595-4&from=paste&height=47&id=u1c6e89ba&name=image.png&originHeight=47&originWidth=392&originalType=binary&ratio=1&rotation=0&showTitle=false&size=2966&status=done&style=none&taskId=uaceb6d23-ccfc-4f0b-87b3-c57029160f5&title=&width=392)<br /> 这样就可以用这条用户信息进行登录了。
+注意：如果要测试，需要往用户表中写入用户数据，并且如果你想让用户的密码是明文存储，需要在密码前加{noop}。例如<br />![image.png](https://picture-20221025.oss-cn-hangzhou.aliyuncs.com/img/image-20230214220603512.png)<br /> 这样就可以用这条用户信息进行登录了。
 #### 3.3.3.2. 密码加密存储
 在实际项目中我们不会把密码明文存储在数据库中。<br />默认使用的 PasswordEncode r要求数据库中的密码格式为：{id}password 。它会根据id去判断密码的加密方式。但是我们一般不会采用这种方式。所以就需要替换 PasswordEncoder。<br />我们一般使用 SpringSecurity 为我们提供的 BCryptPasswordEncoder。<br />我们只需要使用把 BCryptPasswordEncode r对象注入 Spring 容器中，SpringSecurity 就会使用该 PasswordEncoder 来进行密码校验。<br />我们可以定义一个 SpringSecurity 的配置类，SpringSecurity 要求这个配置类要继承 WebSecurityConfigurerAdapter。
 ```java
@@ -1211,7 +1211,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 ```
 ### 4.3.3. 从数据库查询权限信息
 #### 4.3.3.1. RBAC权限模型
-RBAC权限模型（Role-Based Access Control）即：基于角色的权限控制。这是目前最常被开发者使用也是相对易用、通用权限模型。<br />![image.png](https://cdn.nlark.com/yuque/0/2023/png/25843110/1676293804481-228408f0-7be4-4d73-9311-f10167f6b41d.png#averageHue=%23fbfbfb&clientId=uf45796f6-9b0f-4&from=paste&height=430&id=u5ebbd027&name=image.png&originHeight=430&originWidth=713&originalType=binary&ratio=1&rotation=0&showTitle=false&size=23251&status=done&style=none&taskId=u20b5544c-73bc-45db-85f3-187e41d0026&title=&width=713)
+RBAC权限模型（Role-Based Access Control）即：基于角色的权限控制。这是目前最常被开发者使用也是相对易用、通用权限模型。<br />![image.png](https://picture-20221025.oss-cn-hangzhou.aliyuncs.com/img/image-20230214220712902.png)
 #### 4.3.3.2. 准备工作
 
 1. 创建表
