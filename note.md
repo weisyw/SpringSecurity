@@ -53,7 +53,7 @@ public class HelloController {
 
 5. 访问localhost:8080/test，浏览器会响应一个登录页面
 
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/25843110/1673683462499-c6d21538-db02-425e-b97d-5e7b8a226ca3.png#averageHue=%23f1f1f0&clientId=u2abd55b9-1e52-4&from=paste&height=363&id=u4d1b50aa&name=image.png&originHeight=431&originWidth=564&originalType=binary&ratio=1&rotation=0&showTitle=false&size=19231&status=done&style=none&taskId=u8b3832c2-dc9d-40f3-b31d-4d2f59d4151&title=&width=475)
+![image.png](https://picture-20221025.oss-cn-hangzhou.aliyuncs.com/img/image-20230214215831851.png)
 
 6. 需要通过认证才能访问到我们接口，用户名是user，密码会自动打印在控制台
 
