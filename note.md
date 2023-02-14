@@ -57,7 +57,7 @@ public class HelloController {
 
 6. 需要通过认证才能访问到我们接口，用户名是user，密码会自动打印在控制台
 
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/25843110/1673683560447-5723f067-79ec-4677-adb0-84319d202059.png#averageHue=%23fbfaf9&clientId=u2abd55b9-1e52-4&from=paste&height=81&id=uf53e0c90&name=image.png&originHeight=81&originWidth=679&originalType=binary&ratio=1&rotation=0&showTitle=false&size=6709&status=done&style=none&taskId=ub6fdf285-ece2-4d71-8ea5-5d54bd706b6&title=&width=679)<br />![image.png](https://cdn.nlark.com/yuque/0/2023/png/25843110/1673683575979-9a910473-82e9-4de3-966d-a32991b839a0.png#averageHue=%23e3c293&clientId=u2abd55b9-1e52-4&from=paste&height=143&id=uc95f1748&name=image.png&originHeight=185&originWidth=501&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11012&status=done&style=none&taskId=u7d54ac34-e634-4ffa-8f70-7e27821d93c&title=&width=387)
+![image.png](https://picture-20221025.oss-cn-hangzhou.aliyuncs.com/img/image-20230214215929231.png)
 
 # 3. 认证
 ## 3.1. 登录校验流程
